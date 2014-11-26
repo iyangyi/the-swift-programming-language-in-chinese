@@ -200,11 +200,11 @@ do {
 m
 ```
 
-你可以在循環中使用`..`來表示範圍，也可以使用傳統的寫法，兩者是等價的：
+你可以在循環中使用`..<`來表示範圍，也可以使用傳統的寫法，兩者是等價的：
 
 ```swift
 var firstForLoop = 0
-for i in 0..3 {
+for i in 0..<3 {
     firstForLoop += i
 }
 firstForLoop
@@ -216,7 +216,7 @@ for var i = 0; i < 3; ++i {
 secondForLoop
 ```
 
-使用`..`創建的範圍不包含上界，如果想包含的話需要使用`...`。
+使用`..<`創建的範圍不包含上界，如果想包含的話需要使用`...`。
 
 <a name="functions_and_closures"></a>
 ## 函數和閉包
@@ -513,12 +513,12 @@ enum Rank: Int {
         case .King:
             return "king"
         default:
-            return String(self.toRaw())
+            return String(self.rawValue())
         }
     }
 }
 let ace = Rank.Ace
-let aceRawValue = ace.toRaw()
+let aceRawValue = ace.rawValue()
 ```
 
 > 練習：  
@@ -526,10 +526,10 @@ let aceRawValue = ace.toRaw()
 
 在上面的例子中，枚舉原始值的類型是`Int`，所以你只需要設置第一個原始值。剩下的原始值會按照順序賦值。你也可以使用字符串或者浮點數作為枚舉的原始值。
 
-使用`toRaw`和`fromRaw`函數來在原始值和枚舉值之間進行轉換。
+使用`rawValue`來在原始值和枚舉值之間進行轉換。
 
 ```swift
-if let convertedRank = Rank.fromRaw(3) {
+if let convertedRank = Rank(rawValue: 3) {
     let threeDescription = convertedRank.simpleDescription()
 }
 ```

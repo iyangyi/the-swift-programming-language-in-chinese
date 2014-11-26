@@ -22,7 +22,7 @@
 
 Swift 支持大部分标准 C 语言的运算符，且改进许多特性来减少常规编码错误。如：赋值符（`=`）不返回值，以防止把想要判断相等运算符（`==`）的地方写成赋值符导致的错误。算术运算符（`+`，`-`，`*`，`/`，`%`等）会检测并不允许值溢出，以此来避免保存变量时由于变量大于或小于其类型所能承载的范围时导致的异常结果。当然允许你使用 Swift 的溢出运算符来实现溢出。详情参见[溢出运算符](23_Advanced_Operators.html#overflow_operators)。
 
-区别于 C 语言，在 Swift 中你可以对浮点数进行取余运算（`%`），Swift 还提供了 C 语言没有的表达两数之间的值的区间运算符，（`a..b`和`a...b`），这方便我们表达一个区间内的数值。
+区别于 C 语言，在 Swift 中你可以对浮点数进行取余运算（`%`），Swift 还提供了 C 语言没有的表达两数之间的值的区间运算符（`a..<b`和`a...b`），这方便我们表达一个区间内的数值。
 
 本章节只描述了 Swift 中的基本运算符，[高级运算符](23_Advanced_Operators.html)包含了高级运算符，及如何自定义运算符，及如何进行自定义类型的运算符重载。
 
@@ -192,8 +192,8 @@ Swift 中所有数值类型都支持了基本的四则算术运算：
 
 一元正号（`+`）不做任何改变地返回操作数的值。
 
-let minusSix = -6
-let alsoMinusSix = +minusSix  // alsoMinusSix 等于 -6
+	let minusSix = -6
+	let alsoMinusSix = +minusSix  // alsoMinusSix 等于 -6
 
 虽然一元`+`什么都不会改变，但当你在使用一元负号来表达负数时，你可以使用一元正号来表达正数，如此你的代码会具有对称美。
 
@@ -323,9 +323,9 @@ Swift 也提供恒等`===`和不恒等`!==`这两个比较符来判断两个对�
 
 另一种情况，分配一个非空值(`non-nil`)给 `userDefinedColorName`，再次执行空合运算，运算结果为封包在`userDefaultColorName`中的值，而非默认值。
 
-	userDefinedColor = "green"
+	userDefinedColorName = "green"
 	colorNameToUse = userDefinedColorName ?? defaultColorName
-	//userDefinedColor非空，因此colorNameToUsede的值为绿色
+	//userDefinedColorName非空，因此colorNameToUsede的值为绿色
 
 <a name="range_operators"></a>
 ## 区间运算符
@@ -359,7 +359,7 @@ Swift 提供了两个方便表达一个区间的值的运算符。
 
 	let names = ["Anna", "Alex", "Brian", "Jack"]
 	let count = names.count
-	for i in 0..count {
+	for i in 0..<count {
 	    println("第 \(i + 1) 个人叫 \(names[i])")
 	}
 	// 第 1 个人叫 Anna
@@ -368,7 +368,7 @@ Swift 提供了两个方便表达一个区间的值的运算符。
 	// 第 4 个人叫 Jack
 
 
-数组有4个元素，但`0..count`只数到3(最后一个元素的下标)，因为它是半开区间。关于数组，请查阅[数组](04_Collection_Types.html#arrays)。
+数组有4个元素，但`0..<count`只数到3(最后一个元素的下标)，因为它是半开区间。关于数组，请查阅[数组](04_Collection_Types.html#arrays)。
 
 <a name="logical_operators"></a>
 ## 逻辑运算
